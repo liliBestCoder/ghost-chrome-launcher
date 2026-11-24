@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chrome 多开</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+</head>
+<body>
+<main>
+    <header class="toolbar">
+        <h1>Chrome 多开</h1>
+        <div class="actions">
+            <button id="add" class="primary" type="button">＋ 添加实例</button>
+        </div>
+    </header>
+    <section class="inventory" aria-labelledby="profiles-title">
+        <div class="inventory-header">
+            <h2 id="profiles-title">实例列表</h2>
+            <span id="summary"></span>
+        </div>
+        <div class="columns" id="columns" hidden aria-hidden="true">
+            <span>Target 别名</span><span>用户数据目录</span><span>上游节点</span><span>状态</span><span>操作</span>
+        </div>
+        <ul id="profiles"></ul>
+    </section>
+    <p id="status" role="status" aria-live="polite"></p>
+</main>
+<dialog id="profile-dialog" aria-labelledby="form-title">
+    <div class="dialog-header">
+        <h2 id="form-title">添加实例</h2>
+    </div>
+        <form id="profile-form">
+            <label>Target 别名
+                <input id="profile-name" autofocus required maxlength="80" placeholder="工作浏览器">
+            </label>
+            <label>用户数据目录
+                <input id="data-dir" required maxlength="1024" spellcheck="false"
+                       placeholder="D:\Chrome Profiles\Work">
+            </label>
+            <label>上游节点
+                <select id="node" required></select>
+            </label>
+            <label id="executable-field">Chrome 程序
+                <input id="chrome-path" required maxlength="1024" spellcheck="false"
+                       placeholder="C:\Program Files\Google\Chrome\Application\chrome.exe"
+                       aria-describedby="chrome-path-hint">
+                <span class="muted" id="chrome-path-hint"></span>
+            </label>
+            <p id="form-status" role="status" aria-live="polite"></p>
+            <div class="actions dialog-actions">
+                <button type="button" id="cancel">取消</button>
+                <button class="primary" type="submit">保存配置</button>
+            </div>
+        </form>
+</dialog>
+</body>
+</html>

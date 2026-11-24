@@ -1,0 +1,124 @@
+:root {
+    color-scheme: light dark;
+    font-family: "Segoe UI", "Microsoft YaHei UI", sans-serif;
+    --canvas: light-dark(#f3f5f9, #131925);
+    --surface: light-dark(#fff, #1b2433);
+    --subtle: light-dark(#f5f7fb, #212c3d);
+    --ink: light-dark(#19243a, #edf2fc);
+    --muted: light-dark(#53647d, #b1bed3);
+    --line: light-dark(#dce3ed, #344259);
+    --blue: light-dark(#2146b4, #b3c3ff);
+    --blue-soft: light-dark(#edf2ff, #2b3b66);
+    --green: light-dark(#136443, #92e3bc);
+    --green-soft: light-dark(#e4f7ed, #213b35);
+    --red: light-dark(#a22a37, #ffc0c6);
+    --red-soft: light-dark(#fff1f3, #4a2c37);
+    background: var(--canvas);
+    color: var(--ink);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; }
+main { width: min(calc(100% - 48px), 1120px); margin: 32px auto; }
+.toolbar, .inventory-header, .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.toolbar, .inventory-header { justify-content: space-between; }
+.toolbar { margin-bottom: 20px; }
+h1, h2 { margin: 0; }
+h1 { font-size: clamp(22px, 4vw, 30px); }
+h2 { font-size: 16px; }
+.inventory, dialog {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 4px 16px #1423420a;
+}
+.inventory { overflow: hidden; }
+.inventory-header { padding: 18px 20px; }
+#summary, .muted { color: var(--muted); font-size: 13px; }
+.columns, .profile {
+    display: grid;
+    grid-template-columns: minmax(90px, 1fr) minmax(130px, 2fr) minmax(80px, 1fr) 74px 116px;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--line);
+}
+.columns { background: var(--subtle); color: var(--muted); font-size: 12px; }
+.profile { font-size: 14px; }
+.profile:hover { background: var(--subtle); }
+.profile > * { min-width: 0; overflow-wrap: anywhere; }
+.data-path { color: var(--muted); }
+.state {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--subtle);
+    color: var(--muted);
+    white-space: nowrap;
+    font-size: 12px;
+}
+.state.running { background: var(--green-soft); color: var(--green); }
+.state::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.actions { gap: 8px; }
+button, input, select {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 8px 11px;
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+}
+input, select { width: 100%; background: var(--subtle); }
+button { cursor: pointer; white-space: nowrap; font-size: 14px; }
+button:hover:not(:disabled) { filter: brightness(.94); }
+button:disabled { cursor: default; opacity: .48; }
+button.primary {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: light-dark(#fff, #172341);
+}
+button.start { background: var(--blue-soft); color: var(--blue); }
+button.stop { background: var(--red-soft); color: var(--red); }
+button:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+ul { padding: 0; margin: 0; list-style: none; }
+.empty { padding: 52px 20px; text-align: center; color: var(--muted); border-top: 1px solid var(--line); }
+#status, #form-status { margin: 12px 0 0; font-size: 14px; }
+#form-status:empty { display: none; }
+.error { color: var(--red); }
+dialog {
+    color: var(--ink);
+    width: min(calc(100% - 32px), 550px);
+    padding: 0;
+    box-shadow: 0 16px 64px #101b3a40;
+}
+dialog::backdrop { background: #10182795; }
+.dialog-header { padding: 18px 22px; border-bottom: 1px solid var(--line); }
+form { display: grid; gap: 14px; padding: 20px 22px; }
+label { display: grid; gap: 6px; font-size: 14px; }
+.dialog-actions { justify-content: flex-end; padding-top: 14px; border-top: 1px solid var(--line); }
+
+@media (max-width: 680px) {
+    main { width: calc(100% - 28px); margin: 20px auto; }
+    .columns { display: none; }
+    .profile { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
+    .profile strong { grid-area: 1 / 1; }
+    .profile .state { grid-area: 1 / 2; justify-self: end; }
+    .profile .data-path, .profile .upstream { grid-column: 1 / -1; }
+    .profile .actions { grid-column: 1 / -1; justify-content: flex-end; }
+    .profile [data-label]::before {
+        content: attr(data-label) " · ";
+        color: var(--muted);
+        font-size: 12px;
+    }
+}

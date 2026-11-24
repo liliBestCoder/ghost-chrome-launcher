@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.15)
+project(ghost_chrome_launcher LANGUAGES CXX)
+
+add_executable(chrome-launcher main.cpp loopback_ui.cpp "platform/str_conv.cpp")
+target_compile_features(chrome-launcher PRIVATE cxx_std_17)
+target_compile_definitions(chrome-launcher PRIVATE NOMINMAX)
+target_include_directories(chrome-launcher PRIVATE "third_party" "platform")
+set_property(TARGET chrome-launcher PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+if(MSVC)
+    target_compile_options(chrome-launcher PRIVATE /W4 /utf-8)
+endif()
+target_link_libraries(chrome-launcher PRIVATE bcrypt shell32 winhttp ws2_32)
+
+install(TARGETS chrome-launcher RUNTIME DESTINATION .)
+install(FILES manifest.json DESTINATION .)
+install(DIRECTORY ui DESTINATION .)
