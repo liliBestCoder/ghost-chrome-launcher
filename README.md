@@ -4,7 +4,7 @@ Ghost Proxifier 原生 Windows x64 插件。每个实例对应一个 Ghost Targe
 
 ## 使用
 
-1. 在支持 v1 Target API 的 Ghost Proxifier 1.2.2 或更高版本中，打开插件开发者模式，在插件中心选择「从本地安装」，导入 `com.ghostproxifier.chrome-launcher-1.1.1.gpkg`。升级时直接导入新版包即可，已有实例保存在 Ghost Target 列表中。
+1. 在支持 v1 Target API 的 Ghost Proxifier 1.2.2 或更高版本中，可在插件中心直接安装，或打开开发者模式选择「从本地安装」导入 `com.ghostproxifier.chrome-launcher-1.0.0.gpkg`。升级时直接升级即可，已有实例保存在 Ghost Target 列表中。
 2. 启用插件，授予 Target 管理、上游管理和代理出网权限，并勾选该插件可以使用的上游节点。
 3. 打开「Chrome 多开」，点击「添加实例」。插件在 Program Files、Program Files (x86) 和 LocalAppData 下检查常见安装路径。找到 `chrome.exe` 时会自动填入，可以手动修改。填写 Target 别名和独立数据目录，选择上游节点或直连，然后保存。
 4. 在实例列表点击「启动」。如果宿主弹出启动审批，请在 Ghost 窗口确认。运行中的实例可点「停止」，由 Ghost 结束该 Target 的进程。停止后可以编辑目录、别名或节点。列表在页面可见时自动同步。

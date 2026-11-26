@@ -12,5 +12,5 @@ endif()
 target_link_libraries(chrome-launcher PRIVATE bcrypt shell32 winhttp ws2_32)
 
 install(TARGETS chrome-launcher RUNTIME DESTINATION .)
-install(FILES manifest.json DESTINATION .)
+install(FILES manifest.json icon.png dev-public.b64 DESTINATION .)
 install(DIRECTORY ui DESTINATION .)

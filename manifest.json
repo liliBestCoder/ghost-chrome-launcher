@@ -1,7 +1,7 @@
 {
   "v": 1,
   "id": "com.ghostproxifier.chrome-launcher",
-  "version": "1.1.1",
+  "version": "1.0.0",
   "name": {
     "zh": "Chrome 多开",
     "en": "Chrome Launcher"
@@ -10,8 +10,13 @@
     "zh": "为每个 Chrome 实例设置独立数据目录、Target 别名和上游节点，并手动启停。",
     "en": "Configure separate Chrome data directories, Target names and upstream nodes, then start or stop each instance manually."
   },
-  "author": { "name": "Chrome Launcher" },
+  "author": {
+    "name": "Chrome Launcher",
+    "url": "https://github.com/liliBestCoder"
+  },
+  "homepage": "https://github.com/liliBestCoder/ghost-chrome-launcher",
   "category": "productivity",
+  "icon": "icon.png",
   "entry": "chrome-launcher.exe",
   "runtime": { "kind": "none" },
   "ui": { "embedded": true },
